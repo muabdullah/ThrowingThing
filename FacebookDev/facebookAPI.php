@@ -214,7 +214,9 @@
 				return appResponse::returnFailure(1,$e->getMessage());
 			}
 			
-			return appResponse::returnSuccess();
+			if(is_array($postWallFeed) && isset($postWallFeed['id']))
+				return appResponse::returnSuccess();
+			return appResponse::returnFailure(1,'Unable to post content to profile');
 		}
 		
 		/*
@@ -242,7 +244,9 @@
 				return appResponse::returnFailure(1,$e->getMessage());
 			}
 			
-			return appResponse::returnSuccess();
+			if(is_array($postStatus) && isset($postStatus['id']))
+				return appResponse::returnSuccess();
+			return appResponse::returnFailure(1,'Unable to post status to profile');
 		}
 	}
 ?>
